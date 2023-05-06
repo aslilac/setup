@@ -29,10 +29,18 @@ jobs:
       fail-fast: false
 
       matrix:
-        runs-on:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
+        - runs-on: ubuntu-latest
+          archives: |
+            https://github.com/aslilac/betty/releases/download/v0.1.1/betty-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+            https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+        - runs-on: windows-latest
+          archives: |
+            https://github.com/aslilac/betty/releases/download/v0.1.1/betty-v0.1.1-x86_64-pc-windows-msvc.zip
+            https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-pc-windows-msvc.zip
+        - runs-on: macos-latest
+          archives: |
+            https://github.com/aslilac/betty/releases/download/v0.1.1/betty-v0.1.1-x86_64-apple-darwin.tar.gz
+            https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-apple-darwin.tar.gz
 
     runs-on: ${{ matrix.runs-on }}
 
@@ -42,9 +50,7 @@ jobs:
       - uses: ./
         name: Run aslilac/setup@v1
         with:
-          archives: |
-            https://github.com/aslilac/betty/releases/download/v0.1.1/betty-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-            https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+          archives: ${{ matrix.archives }}
 
       - run: betty
         working-directory: ./tests/testdata/betty/
