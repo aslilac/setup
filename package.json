@@ -9,15 +9,11 @@
 		"@actions/tool-cache": "^2.0.1"
 	},
 	"devDependencies": {
-		"@mckayla/tsconfig": "^1.0.3",
 		"@types/node": "^20.1.0",
 		"esbuild": "^0.17.18",
-		"eslint": "^8.40.0",
-		"eslint-config-mckayla": "^1.0.6",
 		"prettier": "^2.8.8"
 	},
 	"scripts": {
-		"fmt": "prettier --write .",
-		"lint": "eslint ."
+		"fmt": "prettier --write ."
 	}
 }
