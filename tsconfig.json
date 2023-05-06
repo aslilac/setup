@@ -1,0 +1,4 @@
+{
+	"extends": "@mckayla/tsconfig",
+	"include": ["./src/**/*"]
+}

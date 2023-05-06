@@ -1,0 +1,12 @@
+name: "Setup"
+description: "Github Action to setup binaries from a tarball/zip file"
+author: "Kayla Washburn"
+
+runs:
+  using: node16
+  main: ".github/setup.js"
+
+inputs:
+  archives:
+    description: The archives to download and load binaries from
+    default: []
