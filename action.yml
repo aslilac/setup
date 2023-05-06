@@ -4,9 +4,9 @@ author: "Kayla Washburn"
 
 runs:
   using: node16
-  main: ".github/setup.js"
+  main: ".github/build/setup.js"
 
 inputs:
   archives:
-    description: The archives to download and load binaries from
-    default: []
+    description: The archives to download and load binaries from (line separated)
+    default: ""

@@ -2066,7 +2066,7 @@ var require_core = __commonJS({
       process.env["PATH"] = `${inputPath}${path.delimiter}${process.env["PATH"]}`;
     }
     exports.addPath = addPath2;
-    function getInput2(name, options) {
+    function getInput(name, options) {
       const val = process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`] || "";
       if (options && options.required && !val) {
         throw new Error(`Input required and not supplied: ${name}`);
@@ -2076,19 +2076,19 @@ var require_core = __commonJS({
       }
       return val.trim();
     }
-    exports.getInput = getInput2;
-    function getMultilineInput(name, options) {
-      const inputs = getInput2(name, options).split("\n").filter((x) => x !== "");
+    exports.getInput = getInput;
+    function getMultilineInput2(name, options) {
+      const inputs = getInput(name, options).split("\n").filter((x) => x !== "");
       if (options && options.trimWhitespace === false) {
         return inputs;
       }
       return inputs.map((input) => input.trim());
     }
-    exports.getMultilineInput = getMultilineInput;
+    exports.getMultilineInput = getMultilineInput2;
     function getBooleanInput(name, options) {
       const trueValue = ["true", "True", "TRUE"];
       const falseValue = ["false", "False", "FALSE"];
-      const val = getInput2(name, options);
+      const val = getInput(name, options);
       if (trueValue.includes(val))
         return true;
       if (falseValue.includes(val))
@@ -5265,7 +5265,7 @@ async function install(archiveUrl) {
   const extractedFolder = await tc.extractTar(archivePath);
   core.addPath(extractedFolder);
 }
-var archives = core.getInput("archives");
+var archives = core.getMultilineInput("archives");
 for (const archive of archives) {
   install(archive);
 }

@@ -9,7 +9,7 @@ async function install(archiveUrl: string) {
 	core.addPath(extractedFolder);
 }
 
-const archives = core.getInput("archives");
+const archives = core.getMultilineInput("archives");
 for (const archive of archives) {
 	install(archive);
 }

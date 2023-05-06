@@ -2,7 +2,7 @@ name: main
 
 on:
   push:
-    branches: ["main"]
+    branches: ["v1"]
   pull_request:
     branches: ["**"]
 
@@ -45,8 +45,9 @@ jobs:
       - uses: ./
         name: Run aslilac/setup@v1
         with:
-          archives:
-            - https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+          archives: |
+            https://github.com/aslilac/betty/releases/download/v0.1.1/betty-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+            https://github.com/aslilac/tomlq/releases/download/v0.1.0/tomlq-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
 
       - run: betty
         working-directory: ./tests/testdata/betty/
