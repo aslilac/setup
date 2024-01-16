@@ -1,7 +1,3 @@
-# setup-nu
+# This action has been archived
 
-```yml
-- uses: aslilac/setup@v1
-  with:
-    tomlq-version: v0.1.0
-```
+Do not use it. It is bad, and broken, and will never be fixed.
